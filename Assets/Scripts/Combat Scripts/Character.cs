@@ -14,6 +14,8 @@ public class Character : MonoBehaviour
     public int defaultDefence;
     public int currentDefence;
     public bool blockNext;
+    public bool dodgeLeft;
+    public bool dodgeRight;
     [Header("Strength")]
     public int defaultStrength;
     public int currentStrength;
@@ -26,6 +28,7 @@ public class Character : MonoBehaviour
     public CombatAction nextAction;
     public CombatAction currentAction;
     public CombatAction previousAction;
+    public List<CombatAction> myActions = new List<CombatAction>();
     //check if the character has acted this round
     public bool acted;
     [Header("UI")]
@@ -38,19 +41,39 @@ public class Character : MonoBehaviour
     private void Start()
     {
         myAnim = GetComponent<Animator>();
+        Refresh(true);
+
     }
 
     public virtual void GetAction(CombatAction action)
     {
         previousAction = currentAction;
+        //default behavior is to randomly select from the list of possible actions
+        int nextup = Random.Range(0, myActions.Count -1);
+        nextAction = myActions[nextup];
         currentAction = action;
+        StartCoroutine(Act(currentAction));
     }
+
+    public virtual IEnumerator Act(CombatAction action)
+    {
+        action.finished = false;
+        CombatManager.Instance.currentCombatLog = action.prepLog;
+        yield return new WaitForSecondsRealtime(2f);
+        StartCoroutine(action.Execute(this));
+        yield return null;
+
+
+    }
+
 
     public void Refresh(bool healthInc)
     {
         currentDefence = defaultDefence;
         currentStrength = defaultStrength;
         currentTohit = defaultTohit;
+        dodgeLeft = false;
+        dodgeRight = false;
 
         if (healthInc)
         {

@@ -2,6 +2,8 @@ using System.Collections;
 using UnityEngine.Events;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 [System.Serializable]
 public class CombatEvent : UnityEvent<string, int>
@@ -21,7 +23,15 @@ public class CombatManager : MonoBehaviour
 
     }
 
-    public Character playerChar;
+    [Header("UI")]
+    public string currentCombatLog;
+    public TMP_Text combatLog;
+    public GameObject combatMenu;
+    public List<PlayerOption> menuButtons = new List<PlayerOption>();
+
+    [Header("References")]
+    public PlayerCharacter playerChar;
+    public List<CombatAction> playerActions = new List<CombatAction>();
     public List<Character> enemiesInBattle = new List<Character>();
     public Encounter currentEncounter;
     public bool playerTurn;
@@ -50,36 +60,103 @@ public class CombatManager : MonoBehaviour
         {
             Debug.Log("No Player Character - Combat Broken");
         }
+
+        //Test Combat - Combat should usually begin because the player triggered it somehow in the overworld
+        CombatBegin(currentEncounter);
         
     }
 
     // Update is called once per frame
     void Update()
     {
-      
+        combatLog.text = currentCombatLog;
+
+        if (combatMenu.activeSelf == true && Input.GetAxis("Mouse ScrollWheel") > 0){
+            ScrollOptions(true);
+
+        }
+        else if (combatMenu.activeSelf == true && Input.GetAxis("Mouse ScrollWheel") < 0)
+        {
+            ScrollOptions(false);
+        }
+        
         
     }
 
-    public void CombatBegin()
+
+    public void CombatBegin(Encounter encounter)
     {
+        currentEncounter = encounter;
+        currentCombatLog = "A Battle has Begun";
         foreach (Character chara in currentEncounter.enemiesInEncounter)
         {
             enemiesInBattle.Add(chara);
             chara.AnimateNow("spawn", chara);
         }
+        foreach (PlayerOption button in menuButtons)
+        {
+            if (playerActions.Count - 1 >= menuButtons.IndexOf(button))
+            {
+                button.PlaceOption(playerActions[menuButtons.IndexOf(button)]);
+            }
+            else
+            {
+                break;
+            }
+            
+        }
+        StartTurn(playerChar);
 
     }
 
     public void StartTurn(Character currentChar)
     {
-        if (currentChar = playerChar)
+        if (currentChar == playerChar)
         {
+            combatMenu.SetActive(true);
+            Debug.Log("Starting Player Turn");
             //make menus interactive for player and wait for input then execute input
         }
+        else
         {
-            //do the enemies action probably as a coroutine
+            Debug.Log("Starting " + currentChar.name + " Turn");
+            //Make the enemy start their next queued action
+            if (currentChar.nextAction == null)
+            {
+                currentChar.nextAction = currentChar.myActions[0];
+            }
+            currentChar.GetAction(currentChar.nextAction);
+            
         }
 
+    }
+
+    //Moving the Player Options
+    public void ScrollOptions(bool up)
+    {
+        if (playerActions.Count > 4)
+        {
+            int bottomIndex = playerActions.IndexOf(menuButtons[4].option);
+            Debug.Log(bottomIndex);
+            foreach (PlayerOption button in menuButtons)
+            {
+                int currentIndex = playerActions.IndexOf(button.option);
+                Debug.Log(currentIndex);
+                button.RemoveOption();
+                if (up && currentIndex < playerActions.Count)
+                {
+                    button.PlaceOption(playerActions[currentIndex + 1]);
+                }
+                else if (!up && bottomIndex > 0)
+                {
+                    button.PlaceOption(playerActions[currentIndex - 1]);
+                }
+                else
+                {
+                    break;
+                }
+            }
+        }
     }
 
     public void EndTurn(Character currentChar)
@@ -95,16 +172,22 @@ public class CombatManager : MonoBehaviour
             {
                 allEnemiesActed = false;
                 nextChar = chara;
+                Debug.Log(nextChar);
                 break;
             }
 
         }
         if (allEnemiesActed)
         {
+            foreach(Character chara in enemiesInBattle)
+            {
+                chara.Refresh(false);
+            }
+            playerChar.Refresh(false);
             EndRound();
         }
         else
-        {
+        { 
             StartTurn(nextChar);
         }
 
@@ -133,7 +216,20 @@ public class CombatManager : MonoBehaviour
     public void EndBattle()
     {
         //switch camera back to overworld camera
-        //
+        //refresh stats for player and for the encounter so it can be reused
+        playerChar.Refresh(true);
+        foreach (Character chara in enemiesInBattle)
+        {
+            chara.Refresh(true);
+        }
+        foreach (PlayerOption button in menuButtons)
+        {
+            button.option = null;
+            button.mytext.text = " ";
+            button.interactable = false;
+
+        }
+
         //end the combat
 
 
