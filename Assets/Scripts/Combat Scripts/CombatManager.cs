@@ -71,16 +71,17 @@ public class CombatManager : MonoBehaviour
     {
         combatLog.text = currentCombatLog;
 
-        if (combatMenu.activeSelf == true && Input.GetAxis("Mouse ScrollWheel") > 0){
+        if (combatMenu.activeSelf == true && Input.GetAxis("Mouse ScrollWheel") < 0)
+        {
             ScrollOptions(true);
 
         }
-        else if (combatMenu.activeSelf == true && Input.GetAxis("Mouse ScrollWheel") < 0)
+        else if (combatMenu.activeSelf == true && Input.GetAxis("Mouse ScrollWheel") > 0)
         {
             ScrollOptions(false);
         }
-        
-        
+
+
     }
 
 
@@ -142,25 +143,28 @@ public class CombatManager : MonoBehaviour
     {
         if (playerActions.Count > 4)
         {
-            int bottomIndex = playerActions.IndexOf(menuButtons[3].option);
+            int bottomIndex = playerActions.IndexOf(menuButtons[0].option);
+            int topIndex = playerActions.IndexOf(menuButtons[3].option);
             Debug.Log(bottomIndex);
+            if (bottomIndex <= 0 && up == false || topIndex >= playerActions.Count -1 && up == true)
+            {
+                Debug.Log("Max Scroll Reached");
+                return;
+            }
             foreach (PlayerOption button in menuButtons)
             {
                 int currentIndex = playerActions.IndexOf(button.option);
-                Debug.Log(currentIndex);
-                button.RemoveOption();
-                if (up && currentIndex < playerActions.Count)
+                if (up)
                 {
+                    Debug.Log("Scroll Up");
                     button.PlaceOption(playerActions[currentIndex + 1]);
-                }
-                else if (!up && bottomIndex > 0)
-                {
-                    button.PlaceOption(playerActions[currentIndex - 1]);
                 }
                 else
                 {
-                    break;
+                    Debug.Log("Scroll Down");
+                    button.PlaceOption(playerActions[currentIndex - 1]);
                 }
+
             }
         }
     }

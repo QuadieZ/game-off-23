@@ -11,6 +11,7 @@ public abstract class CombatAction : ScriptableObject
     public string animationValue;
     public bool finished;
     public bool left;
+    public bool defensive;
 
     public enum ActionSpeed
     {

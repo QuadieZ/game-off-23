@@ -95,10 +95,19 @@ public class Character : MonoBehaviour
 
     public void AnimateHealth()
     {
-        float _c = currentHealth;
-        float _d = defaultHealth;
-        var scale = healthBar.localScale;
-        scale.x = _c/_d;
-        healthBar.localScale = scale;
+        if (currentHealth <= 0)
+        {
+            AnimateNow("death", this);
+        }
+        else
+        {
+            float _c = currentHealth;
+            float _d = defaultHealth;
+            var scale = healthBar.localScale;
+            scale.x = _c / _d;
+            healthBar.localScale = scale;
+
+        }
+
     }
 }

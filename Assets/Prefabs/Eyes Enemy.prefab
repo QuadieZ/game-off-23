@@ -461,9 +461,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4d2f700cdf3f5c41870cef0720814db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterName: Pair of Eyes
-  defaultHealth: 25
-  currentHealth: 25
+  characterName: 'Pair of Eyes '
+  defaultHealth: 10
+  currentHealth: 10
   defaultDefence: 0
   currentDefence: 0
   blockNext: 0
@@ -479,8 +479,8 @@ MonoBehaviour:
   currentAction: {fileID: 0}
   previousAction: {fileID: 0}
   myActions:
-  - {fileID: 11400000, guid: ac7fffc1ff8061e4b8a313c2b24d97e6, type: 2}
   - {fileID: 11400000, guid: 36ca4ec3b1092154398bad9829686006, type: 2}
+  - {fileID: 11400000, guid: ac7fffc1ff8061e4b8a313c2b24d97e6, type: 2}
   acted: 0
   healthBar: {fileID: 7208981439418542772}
   myAnim: {fileID: 7371914785842952915}

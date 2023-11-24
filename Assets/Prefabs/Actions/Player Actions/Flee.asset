@@ -9,17 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc9852897c7351649bf2c222b8765124, type: 3}
-  m_Name: Dodge Right
+  m_Script: {fileID: 11500000, guid: 7a417c1ab5b9eeb4881684f7fc282977, type: 3}
+  m_Name: Flee
   m_EditorClassIdentifier: 
-  prepLog: You Get Ready to Dodge
-  actionLog: You duck to the right
-  actionName: Dodge Right C
-  animationValue: dodge
-  finished: 1
+  prepLog: You look for an opening
+  actionLog: You succesfully exit the scene
+  actionName: Flee F
+  animationValue: flee
+  finished: 0
   left: 0
   defensive: 1
-  speed: 1
-  fullBlock: 0
-  dodge: 1
-  addedDefence: 0
+  speed: 2
+  failmessage: You fail to escape

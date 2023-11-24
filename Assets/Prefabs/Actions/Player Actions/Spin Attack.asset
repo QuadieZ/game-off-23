@@ -10,25 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecbe9198c3930e4aa4bfec32f19eae3, type: 3}
-  m_Name: Eye - Right
+  m_Name: Spin Attack
   m_EditorClassIdentifier: 
-  prepLog: The Eye Focuses it's Gaze to the Right
-  actionLog: 
-  actionName: Right Eye Winking
-  animationValue: right
-  finished: 1
+  prepLog: You wind up for a massice slice
+  actionLog: You continue to whirl
+  actionName: Spinning Slice F
+  animationValue: attack
+  finished: 0
   left: 0
-  defensive: 0
-  speed: 0
+  speed: 2
   target: {fileID: 0}
-  deviation: 2
+  deviation: 3
   damage: 2
-  hitLog: The Eye Bores into Your Soul Like a drill
-  missLog: the attack misses you by a margin of error
-  blockedLog: you block the incomming attack
-  directionRandom: 0
-  multiAttack: 0
+  hitLog: You score a hit
+  missLog: Your speedy slice lacks accuracy
+  blockedLog: Your rapid strike lacks penetrating force
+  directionRandom: 1
+  multiAttack: 1
   sameTarget: 0
-  hitEveryEnemyOnce: 0
-  hitTotal: 1
-  hitCount: 1
+  hitEveryEnemyOnce: 1
+  hitTotal: 3
+  hitCount: 3

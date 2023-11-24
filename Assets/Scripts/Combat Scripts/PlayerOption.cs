@@ -19,39 +19,39 @@ public class PlayerOption : Button
         switch ((CombatManager.Instance.playerChar.comboing, option.speed))
         {
             case (true, CombatAction.ActionSpeed.starter):
-                interactable = false;
+                SwitchOff(true);
                 break;
             case (false, CombatAction.ActionSpeed.starter):
-                interactable = true;
+                SwitchOff(false);
                 onClick.AddListener(delegate { OptionSelected(); });
                 break;
             case (true, CombatAction.ActionSpeed.combo):
-                interactable = true;
+                SwitchOff(false);
                 onClick.AddListener(delegate { OptionSelected(); });
                 break;
             case (false, CombatAction.ActionSpeed.combo):
-                interactable = false;
+                SwitchOff(true);
                 break;
             case (true, CombatAction.ActionSpeed.finisher):
-                interactable = true;
+                SwitchOff(false);
                 onClick.AddListener(delegate { OptionSelected(); });
                 break;
             case (false, CombatAction.ActionSpeed.finisher):
-                interactable = false;
+                SwitchOff(true);
                 break;
             case (true, CombatAction.ActionSpeed.standalone):
-                interactable = false;
+                SwitchOff(true);
                 break;
             case (false, CombatAction.ActionSpeed.standalone):
-                interactable = true;
+                SwitchOff(false);
                 onClick.AddListener(delegate { OptionSelected(); });
                 break;
             case (true, CombatAction.ActionSpeed.flexible):
-                interactable = true;
+                SwitchOff(false);
                 onClick.AddListener(delegate { OptionSelected(); });
                 break;
             case (false, CombatAction.ActionSpeed.flexible):
-                interactable = true;
+                SwitchOff(false);
                 onClick.AddListener(delegate { OptionSelected(); });
                 break;
         }
@@ -64,6 +64,20 @@ public class PlayerOption : Button
         onClick.RemoveAllListeners();
         mytext = null;
 
+    }
+
+    public void SwitchOff(bool off)
+    {
+        if (off)
+        {
+            interactable = false;
+            mytext.color = Color.grey;
+        }
+        else
+        {
+            interactable = true;
+            mytext.color = Color.white;
+        }
     }
 
     public void OptionSelected()

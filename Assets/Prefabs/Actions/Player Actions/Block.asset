@@ -18,6 +18,7 @@ MonoBehaviour:
   animationValue: block
   finished: 1
   left: 0
+  defensive: 1
   speed: 0
   fullBlock: 1
   dodge: 0

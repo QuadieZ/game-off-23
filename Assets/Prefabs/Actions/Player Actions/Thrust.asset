@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prepLog: You ready your spirit and spring forward
   actionLog: 
-  actionName: Thust S
+  actionName: Forward Thust S
   animationValue: attack
   finished: 1
   left: 0
@@ -25,3 +25,9 @@ MonoBehaviour:
   hitLog: You land a stinging blow
   missLog: Your violence goes wide of the mark
   blockedLog: You fail to penetrate their defences
+  directionRandom: 1
+  multiAttack: 0
+  sameTarget: 0
+  hitEveryEnemyOnce: 0
+  hitTotal: 0
+  hitCount: 0

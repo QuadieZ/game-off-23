@@ -10,24 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecbe9198c3930e4aa4bfec32f19eae3, type: 3}
-  m_Name: Heavy
+  m_Name: Tripple Attack
   m_EditorClassIdentifier: 
-  prepLog: You wind up for a heavy attack
-  actionLog: 
-  actionName: Wallop
-  animationValue: 
+  prepLog: You prepare to unleash a flurry of blows
+  actionLog: You strike out again
+  actionName: Flurry F
+  animationValue: attack
   finished: 0
   left: 0
-  speed: 3
+  speed: 2
   target: {fileID: 0}
-  deviation: 6
-  damage: 5
-  hitLog: You land a massive blow
-  missLog: Your foe is too fast
-  blockedLog: They somehow withstood your assault
+  deviation: 4
+  damage: 1
+  hitLog: You land a hit
+  missLog: Your speedy slice lacks accuracy
+  blockedLog: Your rapid strike lacks penetrating force
   directionRandom: 1
-  multiAttack: 0
-  sameTarget: 0
+  multiAttack: 1
+  sameTarget: 1
   hitEveryEnemyOnce: 0
-  hitTotal: 0
-  hitCount: 0
+  hitTotal: 3
+  hitCount: 3
