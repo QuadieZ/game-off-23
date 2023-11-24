@@ -49,7 +49,7 @@ public class Character : MonoBehaviour
     {
         previousAction = currentAction;
         //default behavior is to randomly select from the list of possible actions
-        int nextup = Random.Range(0, myActions.Count -1);
+        int nextup = Random.Range(0, (myActions.Count)-1);
         nextAction = myActions[nextup];
         currentAction = action;
         StartCoroutine(Act(currentAction));
@@ -61,23 +61,26 @@ public class Character : MonoBehaviour
         CombatManager.Instance.currentCombatLog = action.prepLog;
         yield return new WaitForSecondsRealtime(2f);
         StartCoroutine(action.Execute(this));
+        Debug.Log(name + "finished Acting" + action.actionName);
         yield return null;
 
 
     }
 
 
-    public void Refresh(bool healthInc)
+    public void Refresh(bool fullRefresh)
     {
-        currentDefence = defaultDefence;
-        currentStrength = defaultStrength;
+
         currentTohit = defaultTohit;
         dodgeLeft = false;
         dodgeRight = false;
+        blockNext = false;
 
-        if (healthInc)
+        if (fullRefresh)
         {
             currentHealth = defaultHealth;
+            currentDefence = defaultDefence;
+            currentStrength = defaultStrength;
         }
 
     }
@@ -92,8 +95,10 @@ public class Character : MonoBehaviour
 
     public void AnimateHealth()
     {
+        float _c = currentHealth;
+        float _d = defaultHealth;
         var scale = healthBar.localScale;
-        scale.y = currentHealth/defaultHealth;
+        scale.x = _c/_d;
         healthBar.localScale = scale;
     }
 }

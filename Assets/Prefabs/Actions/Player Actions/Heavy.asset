@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fecbe9198c3930e4aa4bfec32f19eae3, type: 3}
-  m_Name: Thrust
+  m_Name: Heavy
   m_EditorClassIdentifier: 
-  prepLog: You ready your spirit and spring forward
+  prepLog: You wind up for a heavy attack
   actionLog: 
-  actionName: Thust S
-  animationValue: attack
-  finished: 1
+  actionName: Heavy
+  animationValue: 
+  finished: 0
   left: 0
-  speed: 0
+  speed: 3
   target: {fileID: 0}
-  deviation: 3
-  damage: 2
-  hitLog: You land a stinging blow
-  missLog: Your violence goes wide of the mark
-  blockedLog: You fail to penetrate their defences
+  deviation: 4
+  damage: 5
+  hitLog: You land a massive blow
+  missLog: Your foe is too fast
+  blockedLog: They somehow withstood your attack

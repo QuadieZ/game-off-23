@@ -86,11 +86,13 @@ public class CombatManager : MonoBehaviour
 
     public void CombatBegin(Encounter encounter)
     {
+        playerChar.Refresh(true);
         currentEncounter = encounter;
         currentCombatLog = "A Battle has Begun";
         foreach (Character chara in currentEncounter.enemiesInEncounter)
         {
             enemiesInBattle.Add(chara);
+            chara.Refresh(true);
             chara.AnimateNow("spawn", chara);
         }
         foreach (PlayerOption button in menuButtons)
@@ -113,6 +115,10 @@ public class CombatManager : MonoBehaviour
     {
         if (currentChar == playerChar)
         {
+            foreach (PlayerOption button in menuButtons)
+            {
+                button.PlaceOption(button.option);
+            }
             combatMenu.SetActive(true);
             Debug.Log("Starting Player Turn");
             //make menus interactive for player and wait for input then execute input
@@ -136,7 +142,7 @@ public class CombatManager : MonoBehaviour
     {
         if (playerActions.Count > 4)
         {
-            int bottomIndex = playerActions.IndexOf(menuButtons[4].option);
+            int bottomIndex = playerActions.IndexOf(menuButtons[3].option);
             Debug.Log(bottomIndex);
             foreach (PlayerOption button in menuButtons)
             {
@@ -172,7 +178,7 @@ public class CombatManager : MonoBehaviour
             {
                 allEnemiesActed = false;
                 nextChar = chara;
-                Debug.Log(nextChar);
+                //Debug.Log(nextChar);
                 break;
             }
 

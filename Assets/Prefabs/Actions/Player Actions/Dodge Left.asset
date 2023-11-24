@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prepLog: You Get Ready to Dodge
   actionLog: You jump to the left
-  actionName: Dodge Left (combo)
-  actionSpeed: 0
+  actionName: Dodge Left C
   animationValue: dodge
-  finished: 0
+  finished: 1
   left: 1
+  speed: 1
   fullBlock: 0
-  dodge: 0
+  dodge: 1
   addedDefence: 0

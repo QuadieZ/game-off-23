@@ -31,28 +31,32 @@ public class Attack : CombatAction
         }
         float hit = Random.Range(0f, actor.currentTohit);
         int finalDamage = damage + actor.currentStrength - target.currentDefence;
-        if (hit >= deviation && target.blockNext == false && finalDamage > 0)
+        
+        if (hit < deviation || target.dodgeLeft && left || target.dodgeRight && !left)
+        {
+            target.AnimateNow("miss", actor);
+            target.AnimateNow("dodge", target);
+            Debug.Log( actor.name + " missed and left was " + left);
+            CombatManager.Instance.currentCombatLog = missLog;
+            yield return new WaitForSecondsRealtime(2);
+            
+        }
+        else if (target.blockNext == false && finalDamage > 0)
         {
             CombatManager.Instance.currentCombatLog = hitLog;
             target.currentHealth -= (damage + actor.currentStrength - target.currentDefence);
             target.AnimateNow(animationValue, actor);
             target.AnimateNow("damage", target);
             target.AnimateHealth();
+            Debug.Log(actor.name + " hit and left was " + left);
             yield return new WaitForSecondsRealtime(2);
-        }
-        else if (hit < deviation || target.dodgeLeft && left || target.dodgeRight && !left)
-        {
-            target.AnimateNow("miss", actor);
-            target.AnimateNow("dodge", target);
-            CombatManager.Instance.currentCombatLog = missLog;
-            yield return new WaitForSecondsRealtime(2);
-            
         }
         else
         {
             target.AnimateNow("miss", actor);
             target.AnimateNow("block", target);
             target.blockNext = false;
+            Debug.Log(actor.name + " was blocked ");
             CombatManager.Instance.currentCombatLog = blockedLog;
             yield return new WaitForSecondsRealtime(2);
         }

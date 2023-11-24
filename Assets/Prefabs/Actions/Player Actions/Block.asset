@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   prepLog: You Raise Your Shields
   actionLog: You Are Ready to Deflect the next Attack
-  actionName: Block (Starter)
-  actionSpeed: 0
+  actionName: Block S
   animationValue: block
-  finished: 0
+  finished: 1
   left: 0
+  speed: 0
   fullBlock: 1
   dodge: 0
   addedDefence: 0

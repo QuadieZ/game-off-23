@@ -11,6 +11,7 @@ public class PlayerOption : Button
 
     public void PlaceOption(CombatAction newOption)
     {
+        RemoveOption();
         option = newOption;
         mytext = GetComponentInChildren<TMP_Text>();
         mytext.text = option.actionName;
@@ -60,13 +61,14 @@ public class PlayerOption : Button
 
     public void RemoveOption()
     {
-        onClick.RemoveListener (delegate { OptionSelected(); });
+        onClick.RemoveAllListeners();
         mytext = null;
 
     }
 
     public void OptionSelected()
     {
+        Debug.Log("Selected" + option.actionName);
         CombatManager.Instance.playerChar.GetAction(option);
     }
 
