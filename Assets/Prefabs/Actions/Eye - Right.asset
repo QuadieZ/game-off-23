@@ -15,8 +15,8 @@ MonoBehaviour:
   prepLog: The Eye Focuses it's Gaze to the Right
   actionLog: 
   actionName: Right Eye Winking
-  animationValue: right
-  finished: 1
+  animationValue: attack
+  finished: 0
   left: 0
   defensive: 0
   speed: 0

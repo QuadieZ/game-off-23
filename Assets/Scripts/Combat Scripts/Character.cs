@@ -40,7 +40,7 @@ public class Character : MonoBehaviour
 
     private void Start()
     {
-        myAnim = GetComponent<Animator>();
+        myAnim = GetComponentInChildren<Animator>();
         Refresh(true);
 
     }
@@ -90,6 +90,7 @@ public class Character : MonoBehaviour
         if (chara.myAnim != null)
         {
             chara.myAnim.SetTrigger(animTrigger);
+            Debug.Log(animTrigger + "meow meow");
         }
     }
 

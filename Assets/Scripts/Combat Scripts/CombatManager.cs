@@ -145,10 +145,10 @@ public class CombatManager : MonoBehaviour
         {
             int bottomIndex = playerActions.IndexOf(menuButtons[0].option);
             int topIndex = playerActions.IndexOf(menuButtons[3].option);
-            Debug.Log(bottomIndex);
+            //Debug.Log(bottomIndex);
             if (bottomIndex <= 0 && up == false || topIndex >= playerActions.Count -1 && up == true)
             {
-                Debug.Log("Max Scroll Reached");
+                //Debug.Log("Max Scroll Reached");
                 return;
             }
             foreach (PlayerOption button in menuButtons)
@@ -156,12 +156,12 @@ public class CombatManager : MonoBehaviour
                 int currentIndex = playerActions.IndexOf(button.option);
                 if (up)
                 {
-                    Debug.Log("Scroll Up");
+                    //Debug.Log("Scroll Up");
                     button.PlaceOption(playerActions[currentIndex + 1]);
                 }
                 else
                 {
-                    Debug.Log("Scroll Down");
+                    //Debug.Log("Scroll Down");
                     button.PlaceOption(playerActions[currentIndex - 1]);
                 }
 

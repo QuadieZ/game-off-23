@@ -34,6 +34,18 @@ public class Attack : CombatAction
 
             target = newRandomTarget();
         }
+
+        Debug.Log("my target is " + target.name);
+
+        if (multiAttack)
+        {
+            hitCount = hitTotal;
+        }
+        else
+        {
+            hitCount = 1;
+        }
+
         while (hitCount > 0)
         {
             //pick a new target if need be
@@ -44,11 +56,13 @@ public class Attack : CombatAction
             else if (hitCount < hitTotal && sameTarget == false && actor == CombatManager.Instance.playerChar)
             {
                 target = newRandomTarget();
+                
             }
             if (hitCount < hitTotal)
             {
                 CombatManager.Instance.currentCombatLog = actionLog;
             }
+
 
             float hit = Random.Range(0f, actor.currentTohit);
             int finalDamage = damage + actor.currentStrength - target.currentDefence;

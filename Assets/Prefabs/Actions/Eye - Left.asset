@@ -15,7 +15,7 @@ MonoBehaviour:
   prepLog: The Eye Focuses it's Gaze to the Left
   actionLog: 
   actionName: Left Eye Blinking
-  animationValue: left
+  animationValue: attack
   finished: 1
   left: 1
   defensive: 0

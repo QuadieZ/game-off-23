@@ -19,8 +19,7 @@ public class PlayerCharacter : Character
         CombatManager.Instance.currentCombatLog = action.prepLog;
         yield return new WaitForSecondsRealtime(2f);
         StartCoroutine(action.Execute(this));
-        Debug.Log("player finished Acting" + action.actionName);
-
+        Debug.Log("player started" + action.actionName);
         yield return null;
 
 
