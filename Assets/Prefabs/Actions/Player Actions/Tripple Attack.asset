@@ -16,8 +16,11 @@ MonoBehaviour:
   actionLog: You strike out again
   actionName: Flurry F
   animationValue: attack
+  animationPrepValue: 
   finished: 0
   left: 0
+  defensive: 0
+  sizeCost: 1.3
   speed: 2
   target: {fileID: 0}
   deviation: 4
@@ -29,5 +32,6 @@ MonoBehaviour:
   multiAttack: 1
   sameTarget: 1
   hitEveryEnemyOnce: 0
+  parry: 0
   hitTotal: 3
   hitCount: 3

@@ -16,9 +16,11 @@ MonoBehaviour:
   actionLog: You Are Ready to Deflect the next Attack
   actionName: Block S
   animationValue: block
+  animationPrepValue: 
   finished: 1
   left: 0
   defensive: 1
+  sizeCost: 1.5
   speed: 0
   fullBlock: 1
   dodge: 0

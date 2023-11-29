@@ -6,10 +6,6 @@ using UnityEngine.UI;
 using TMPro;
 
 [System.Serializable]
-public class CombatEvent : UnityEvent<string, int>
-{
-}
-
 public class CombatManager : MonoBehaviour
 {
     //create instance of combatmanager
@@ -95,6 +91,11 @@ public class CombatManager : MonoBehaviour
             enemiesInBattle.Add(chara);
             chara.Refresh(true);
             chara.AnimateNow("spawn", chara);
+            if (chara.nextAction == null && chara != instance.playerChar)
+            {
+                chara.nextAction = chara.myActions[0];
+            }
+            chara.AnimateNow(chara.nextAction.animationPrepValue, chara);
         }
         foreach (PlayerOption button in menuButtons)
         {
@@ -212,10 +213,18 @@ public class CombatManager : MonoBehaviour
         }
         else
         {
-            foreach(Character chara in enemiesInBattle)
+            playerChar.attacked = false;
+            foreach (Character chara in enemiesInBattle)
             {
+                chara.AnimateNow(chara.nextAction.animationPrepValue, chara);
                 chara.acted = false;
+                Debug.Log("my last action was an " + chara.currentAction.GetType().ToString());
+                if (chara.currentAction.GetType().ToString() == "Attack")
+                {
+                    playerChar.attacked = true;
+                }
             }
+
             playerChar.acted = false;
             playerTurn = true;
             StartTurn(playerChar);
@@ -242,6 +251,11 @@ public class CombatManager : MonoBehaviour
 
         //end the combat
 
+
+    }
+
+    public void SendEvent(string name)
+    {
 
     }
 }

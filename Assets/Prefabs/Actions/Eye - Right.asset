@@ -16,9 +16,11 @@ MonoBehaviour:
   actionLog: 
   actionName: Right Eye Winking
   animationValue: attack
+  animationPrepValue: right
   finished: 0
   left: 0
   defensive: 0
+  sizeCost: 0
   speed: 0
   target: {fileID: 0}
   deviation: 2
@@ -30,5 +32,6 @@ MonoBehaviour:
   multiAttack: 0
   sameTarget: 0
   hitEveryEnemyOnce: 0
+  parry: 0
   hitTotal: 1
   hitCount: 1

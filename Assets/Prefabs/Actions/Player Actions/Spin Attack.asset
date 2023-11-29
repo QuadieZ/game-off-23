@@ -16,8 +16,11 @@ MonoBehaviour:
   actionLog: You continue to whirl
   actionName: Spinning Slice F
   animationValue: attack
+  animationPrepValue: 
   finished: 0
   left: 0
+  defensive: 0
+  sizeCost: 1.5
   speed: 2
   target: {fileID: 0}
   deviation: 3
@@ -29,5 +32,6 @@ MonoBehaviour:
   multiAttack: 1
   sameTarget: 0
   hitEveryEnemyOnce: 1
+  parry: 1
   hitTotal: 3
   hitCount: 3

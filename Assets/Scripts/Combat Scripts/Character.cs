@@ -8,8 +8,10 @@ public class Character : MonoBehaviour
 
     public string characterName;
     [Header("Health")]
+    public int defaultMaxHealth;
     public int defaultHealth;
     public int currentHealth;
+    public string secretWeakness;
     [Header("Defence")]
     public int defaultDefence;
     public int currentDefence;
@@ -49,7 +51,7 @@ public class Character : MonoBehaviour
     {
         previousAction = currentAction;
         //default behavior is to randomly select from the list of possible actions
-        int nextup = Random.Range(0, (myActions.Count)-1);
+        int nextup = Random.Range(0, (myActions.Count));
         nextAction = myActions[nextup];
         currentAction = action;
         StartCoroutine(Act(currentAction));
@@ -78,9 +80,11 @@ public class Character : MonoBehaviour
 
         if (fullRefresh)
         {
+            defaultHealth = defaultMaxHealth;
             currentHealth = defaultHealth;
             currentDefence = defaultDefence;
             currentStrength = defaultStrength;
+            healthBar.gameObject.SetActive(true);
         }
 
     }
@@ -98,7 +102,9 @@ public class Character : MonoBehaviour
     {
         if (currentHealth <= 0)
         {
-            AnimateNow("death", this);
+            Debug.Log(characterName + " died");
+            myAnim.SetBool("death", true);
+            healthBar.gameObject.SetActive(false);
         }
         else
         {
@@ -110,5 +116,17 @@ public class Character : MonoBehaviour
 
         }
 
+    }
+
+    public void Death()
+    {
+        if (CombatManager.Instance.playerChar == this)
+        {
+            //figure this out
+        }
+        else
+        {
+            CombatManager.Instance.enemiesInBattle.Remove(this);
+        }
     }
 }

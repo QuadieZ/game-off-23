@@ -16,8 +16,11 @@ MonoBehaviour:
   actionLog: 
   actionName: Forward Thust S
   animationValue: attack
+  animationPrepValue: 
   finished: 1
   left: 0
+  defensive: 0
+  sizeCost: 1
   speed: 0
   target: {fileID: 0}
   deviation: 3
@@ -29,5 +32,6 @@ MonoBehaviour:
   multiAttack: 0
   sameTarget: 0
   hitEveryEnemyOnce: 0
+  parry: 0
   hitTotal: 0
   hitCount: 0

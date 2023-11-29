@@ -16,8 +16,11 @@ MonoBehaviour:
   actionLog: 
   actionName: Advancing Slash C
   animationValue: attack
+  animationPrepValue: 
   finished: 1
   left: 0
+  defensive: 0
+  sizeCost: 0.5
   speed: 1
   target: {fileID: 0}
   deviation: 2
@@ -29,5 +32,6 @@ MonoBehaviour:
   multiAttack: 0
   sameTarget: 0
   hitEveryEnemyOnce: 0
+  parry: 0
   hitTotal: 0
   hitCount: 0

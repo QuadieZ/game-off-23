@@ -9,9 +9,12 @@ public abstract class CombatAction : ScriptableObject
     public string actionLog;
     public string actionName;
     public string animationValue;
+    public string animationPrepValue;
     public bool finished;
     public bool left;
     public bool defensive;
+
+    public float sizeCost;
 
     public enum ActionSpeed
     {

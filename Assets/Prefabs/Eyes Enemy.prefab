@@ -462,8 +462,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterName: 'Pair of Eyes '
+  defaultMaxHealth: 10
   defaultHealth: 10
   currentHealth: 10
+  secretWeakness: 
   defaultDefence: 0
   currentDefence: 0
   blockNext: 0
@@ -479,6 +481,7 @@ MonoBehaviour:
   currentAction: {fileID: 0}
   previousAction: {fileID: 0}
   myActions:
+  - {fileID: 11400000, guid: f24aa69188a8d184b9fb722ef910ff85, type: 2}
   - {fileID: 11400000, guid: 36ca4ec3b1092154398bad9829686006, type: 2}
   - {fileID: 11400000, guid: ac7fffc1ff8061e4b8a313c2b24d97e6, type: 2}
   acted: 0

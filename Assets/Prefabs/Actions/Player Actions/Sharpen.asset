@@ -9,17 +9,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7a417c1ab5b9eeb4881684f7fc282977, type: 3}
-  m_Name: Flee
+  m_Script: {fileID: 11500000, guid: 5352a0cfb5bd19845aefb949d49e62fa, type: 3}
+  m_Name: Sharpen
   m_EditorClassIdentifier: 
-  prepLog: You look for an opening
-  actionLog: You succesfully exit the scene
-  actionName: Flee F
-  animationValue: flee
+  prepLog: You think about violence
+  actionLog: You tune your body into knives
+  actionName: Sharpen S
+  animationValue: buff
   animationPrepValue: 
   finished: 0
   left: 0
-  defensive: 1
-  sizeCost: 1
-  speed: 2
-  failmessage: You fail to escape
+  defensive: 0
+  sizeCost: 0.5
+  speed: 0
+  type: 1
+  buffStrength: 2
+  maxBuff: 2

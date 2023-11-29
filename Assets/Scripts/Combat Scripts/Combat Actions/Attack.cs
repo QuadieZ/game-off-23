@@ -6,7 +6,7 @@ using UnityEngine;
 public class Attack : CombatAction
 {
     public Character target;
-    public float deviation = 5;
+    public float deviation = 2;
     public int damage = 2;
     public string hitLog = "The attack hits!";
     public string missLog = "The attack misses!";
@@ -15,6 +15,7 @@ public class Attack : CombatAction
     public bool multiAttack;
     public bool sameTarget;
     public bool hitEveryEnemyOnce;
+    public bool parry;
     public int hitTotal;
     public int hitCount;
 
@@ -23,6 +24,7 @@ public class Attack : CombatAction
         if (actor != CombatManager.Instance.playerChar)
         {
             target = CombatManager.Instance.playerChar;
+            CombatManager.Instance.playerChar.attacked = true;
         }
         //For now I am just assigning the enemy target at random
         else if (hitEveryEnemyOnce == true)
@@ -64,8 +66,13 @@ public class Attack : CombatAction
             }
 
 
-            float hit = Random.Range(0f, actor.currentTohit);
+            int hit = Random.Range(0, actor.currentTohit + 1);
             int finalDamage = damage + actor.currentStrength - target.currentDefence;
+            if (parry && CombatManager.Instance.playerChar.attacked)
+            {
+                finalDamage += actor.currentDefence;
+            }
+            Debug.Log("aims for " + finalDamage + " on " + target + " accuracy is " + hit + " and deviation is " + deviation);
             if (directionRandom)
             {
                 left = System.Convert.ToBoolean(Random.Range(0, 2));

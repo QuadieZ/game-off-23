@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5352a0cfb5bd19845aefb949d49e62fa, type: 3}
+  m_Name: Hone In
+  m_EditorClassIdentifier: 
+  prepLog: The Eyes are looking for something to hurt
+  actionLog: The Eyes focus you in their sight
+  actionName: 
+  animationValue: buff
+  animationPrepValue: buff
+  finished: 0
+  left: 0
+  defensive: 0
+  sizeCost: 0
+  speed: 0
+  type: 4
+  buffStrength: 3
+  maxBuff: 0

@@ -16,9 +16,11 @@ MonoBehaviour:
   actionLog: You jump to the left
   actionName: Dodge Left C
   animationValue: dodge
+  animationPrepValue: 
   finished: 1
   left: 1
   defensive: 1
+  sizeCost: 1
   speed: 1
   fullBlock: 0
   dodge: 1

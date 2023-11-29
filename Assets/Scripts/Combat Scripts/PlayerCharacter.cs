@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerCharacter : Character
 {
     public bool comboing;
+    public bool attacked;
     public override void GetAction(CombatAction action)
     {
         previousAction = currentAction;
