@@ -33,6 +33,8 @@ public class Character : MonoBehaviour
     public List<CombatAction> myActions = new List<CombatAction>();
     //check if the character has acted this round
     public bool acted;
+    int lastBuff = 0;
+    int lastAttack = 0;
     [Header("UI")]
     public Transform healthBar;
 
@@ -51,7 +53,21 @@ public class Character : MonoBehaviour
     {
         previousAction = currentAction;
         //default behavior is to randomly select from the list of possible actions
-        int nextup = Random.Range(0, (myActions.Count));
+        //make sure their buff action are closer to index 0 and this code will make sure they don't do the same buff twice in a row
+        if (previousAction != null && previousAction.GetType().ToString() == "Buff")
+        {
+            Debug.Log("removing buff chance");
+            lastBuff += 1;
+            lastAttack = 0;
+        }
+        else if(previousAction != null && previousAction.GetType().ToString() == "Attack")
+        {
+            Debug.Log("lowering attack chance");
+            lastAttack += 1;
+            lastBuff = 0;
+        }
+        //Debug.Log(previousAction.GetType().ToString() + lastBuff);
+        int nextup = Random.Range(0 + lastBuff, (myActions.Count) - lastAttack);
         nextAction = myActions[nextup];
         currentAction = action;
         StartCoroutine(Act(currentAction));
@@ -105,6 +121,7 @@ public class Character : MonoBehaviour
             Debug.Log(characterName + " died");
             myAnim.SetBool("death", true);
             healthBar.gameObject.SetActive(false);
+            Death();
         }
         else
         {

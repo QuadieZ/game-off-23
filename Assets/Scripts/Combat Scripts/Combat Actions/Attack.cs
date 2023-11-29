@@ -60,6 +60,10 @@ public class Attack : CombatAction
                 target = newRandomTarget();
                 
             }
+            else if (hitCount < hitTotal && (sameTarget == true || CombatManager.Instance.playerChar != actor) && target.currentHealth == 0)
+            {
+                break;
+            }
             if (hitCount < hitTotal)
             {
                 CombatManager.Instance.currentCombatLog = actionLog;
@@ -90,13 +94,21 @@ public class Attack : CombatAction
             }
             else if (target.blockNext == false && finalDamage > 0)
             {
+
                 CombatManager.Instance.currentCombatLog = hitLog;
                 target.currentHealth -= (damage + actor.currentStrength - target.currentDefence);
                 target.AnimateNow(animationValue, actor);
                 target.AnimateNow("damage", target);
                 target.AnimateHealth();
                 Debug.Log(actor.name + " hit and left was " + left);
-                yield return new WaitForSecondsRealtime(2);
+                yield return new WaitForSecondsRealtime(0.5f);
+                if (CombatManager.Instance.enemiesInBattle.Count == 0)
+                {
+                    CombatManager.Instance.currentCombatLog = "You are alone once more";
+                }
+                yield return new WaitForSecondsRealtime(1.5f);
+
+
             }
             else
             {

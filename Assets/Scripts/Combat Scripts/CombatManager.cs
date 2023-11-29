@@ -93,7 +93,7 @@ public class CombatManager : MonoBehaviour
             chara.AnimateNow("spawn", chara);
             if (chara.nextAction == null && chara != instance.playerChar)
             {
-                chara.nextAction = chara.myActions[0];
+                chara.nextAction = chara.myActions[Random.Range(0, (chara.myActions.Count))];
             }
             chara.AnimateNow(chara.nextAction.animationPrepValue, chara);
         }
@@ -117,6 +117,7 @@ public class CombatManager : MonoBehaviour
     {
         if (currentChar == playerChar)
         {
+            currentCombatLog = "It's your turn";
             foreach (PlayerOption button in menuButtons)
             {
                 button.PlaceOption(button.option);
@@ -216,6 +217,7 @@ public class CombatManager : MonoBehaviour
             playerChar.attacked = false;
             foreach (Character chara in enemiesInBattle)
             {
+                chara.previousAction = chara.currentAction;
                 chara.AnimateNow(chara.nextAction.animationPrepValue, chara);
                 chara.acted = false;
                 Debug.Log("my last action was an " + chara.currentAction.GetType().ToString());
@@ -248,7 +250,7 @@ public class CombatManager : MonoBehaviour
             button.interactable = false;
 
         }
-
+        Debug.Log("Battle Ends");
         //end the combat
 
 

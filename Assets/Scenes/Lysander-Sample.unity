@@ -2011,8 +2011,12 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 7796345935947676654, guid: 2401e67559468c545a30978f78cb4afe, type: 3}
+      propertyPath: defaultHealth
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7796345935947676654, guid: 2401e67559468c545a30978f78cb4afe, type: 3}
       propertyPath: defaultMaxHealth
-      value: 20
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7910868522851495343, guid: 2401e67559468c545a30978f78cb4afe, type: 3}
       propertyPath: m_Name
@@ -2020,11 +2024,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7959635197517273723, guid: 2401e67559468c545a30978f78cb4afe, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7
+      value: -6.5
       objectReference: {fileID: 0}
     - target: {fileID: 7959635197517273723, guid: 2401e67559468c545a30978f78cb4afe, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3
+      value: -2.5
       objectReference: {fileID: 0}
     - target: {fileID: 7959635197517273723, guid: 2401e67559468c545a30978f78cb4afe, type: 3}
       propertyPath: m_LocalPosition.z

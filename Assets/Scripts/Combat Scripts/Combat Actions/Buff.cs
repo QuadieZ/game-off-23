@@ -29,9 +29,12 @@ public class Buff : CombatAction
                 break;
             case BuffType.Health:
                 actor.currentHealth += buffStrength + variance;
+                actor.AnimateHealth();
                 break;
             case BuffType.MaxHealth:
                 actor.defaultHealth += buffStrength + variance;
+                actor.currentHealth += buffStrength + variance;
+                actor.AnimateHealth();
                 break;
             case BuffType.Accuracy:
                 actor.currentTohit += buffStrength + variance;
@@ -39,7 +42,7 @@ public class Buff : CombatAction
 
         }
         CombatManager.Instance.currentCombatLog = prepLog;
-        yield return new WaitForSecondsRealtime(2);
+        yield return new WaitForSecondsRealtime(1);
         actor.AnimateNow(animationValue, actor);
         CombatManager.Instance.currentCombatLog = actionLog;
         yield return new WaitForSecondsRealtime(2);

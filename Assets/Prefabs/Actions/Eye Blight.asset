@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5352a0cfb5bd19845aefb949d49e62fa, type: 3}
-  m_Name: Hone In
+  m_Name: Eye Blight
   m_EditorClassIdentifier: 
-  prepLog: The Eyes are looking for something to hurt
-  actionLog: The Eyes focus you in their sight
+  prepLog: The Eyes are contemplating violence
+  actionLog: The Eyes are staring daggers
   actionName: 
   animationValue: buff
   animationPrepValue: look
@@ -22,6 +22,6 @@ MonoBehaviour:
   defensive: 0
   sizeCost: 0
   speed: 0
-  type: 4
-  buffStrength: 3
+  type: 1
+  buffStrength: 1
   maxBuff: 0
