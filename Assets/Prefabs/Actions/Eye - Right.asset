@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Eye - Right
   m_EditorClassIdentifier: 
   prepLog: The Eye Focuses it's Gaze to the Right
+  mouseOverLog: The Eye is focusing it's Gaze to the right
   actionLog: 
   actionName: Right Eye Winking
   animationValue: attack

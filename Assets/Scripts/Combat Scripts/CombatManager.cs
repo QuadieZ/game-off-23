@@ -97,7 +97,8 @@ public class CombatManager : MonoBehaviour
             chara.AnimateNow("spawn", chara);
             if (chara.nextAction == null && chara != instance.playerChar)
             {
-                chara.nextAction = chara.myActions[Random.Range(0, (chara.myActions.Count))];
+                chara.GetAction(null, false);
+                Debug.Log("chose " + chara.nextAction);
             }
             chara.AnimateNow(chara.nextAction.animationPrepValue, chara);
         }
@@ -121,6 +122,7 @@ public class CombatManager : MonoBehaviour
     {
         if (currentChar == playerChar)
         {
+            playerTurn = true;
             currentCombatLog = "It's your turn";
             foreach (PlayerOption button in menuButtons)
             {
@@ -138,7 +140,7 @@ public class CombatManager : MonoBehaviour
             {
                 currentChar.nextAction = currentChar.myActions[0];
             }
-            currentChar.GetAction(currentChar.nextAction);
+            currentChar.GetAction(currentChar.nextAction, true);
             
         }
 
@@ -221,10 +223,11 @@ public class CombatManager : MonoBehaviour
             playerChar.attacked = false;
             foreach (Character chara in enemiesInBattle)
             {
+                chara.attacked = false;
                 chara.previousAction = chara.currentAction;
                 chara.AnimateNow(chara.nextAction.animationPrepValue, chara);
                 chara.acted = false;
-                Debug.Log("my last action was an " + chara.currentAction.GetType().ToString());
+                //Debug.Log("my last action was an " + chara.currentAction.GetType().ToString());
                 if (chara.currentAction.GetType().ToString() == "Attack")
                 {
                     playerChar.attacked = true;

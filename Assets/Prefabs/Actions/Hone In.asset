@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5352a0cfb5bd19845aefb949d49e62fa, type: 3}
   m_Name: Hone In
   m_EditorClassIdentifier: 
-  prepLog: The Eyes are looking for something to hurt
+  prepLog: The Eyes begin looking for something to hurt
+  mouseOverLog: The Eyes are looking for something to hurt
   actionLog: The Eyes focus you in their sight
   actionName: 
   animationValue: buff

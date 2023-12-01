@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5352a0cfb5bd19845aefb949d49e62fa, type: 3}
   m_Name: Eye Blight
   m_EditorClassIdentifier: 
-  prepLog: The Eyes are contemplating violence
+  prepLog: The Eyes begin contemplating violence
+  mouseOverLog: The Eyes are contemplating violence
   actionLog: The Eyes are staring daggers
   actionName: 
   animationValue: buff

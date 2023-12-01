@@ -32,10 +32,12 @@ public class Character : MonoBehaviour
     public CombatAction currentAction;
     public CombatAction previousAction;
     public List<CombatAction> myActions = new List<CombatAction>();
+    public int minStartAction = 0;
     //check if the character has acted this round
     public bool acted;
-    int lastBuff = 0;
-    int lastAttack = 0;
+    public int lastBuff = 0;
+    public int lastAttack = 0;
+    public bool attacked;
     [Header("UI")]
     public Transform healthBar;
 
@@ -55,7 +57,7 @@ public class Character : MonoBehaviour
 
     }
 
-    public virtual void GetAction(CombatAction action)
+    public virtual void GetAction(CombatAction action, bool acting)
     {
         previousAction = currentAction;
         //default behavior is to randomly select from the list of possible actions
@@ -76,7 +78,10 @@ public class Character : MonoBehaviour
         int nextup = Random.Range(0 + lastBuff, (myActions.Count) - lastAttack);
         nextAction = myActions[nextup];
         currentAction = action;
-        StartCoroutine(Act(currentAction));
+        if (acting)
+        {
+            StartCoroutine(Act(currentAction));
+        }
     }
 
     public virtual IEnumerator Act(CombatAction action)
@@ -159,6 +164,15 @@ public class Character : MonoBehaviour
 
         }
 
+    }
+
+    public void OnMouseOver()
+    {
+        //Debug.Log("I see you");
+        if (CombatManager.Instance.playerChar != this && CombatManager.Instance.playerTurn)
+        {
+            CombatManager.Instance.currentCombatLog = nextAction.mouseOverLog;
+        }
     }
 
     public void Death()

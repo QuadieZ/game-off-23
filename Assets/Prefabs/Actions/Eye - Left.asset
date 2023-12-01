@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Eye - Left
   m_EditorClassIdentifier: 
   prepLog: The Eye Focuses it's Gaze to the Left
+  mouseOverLog: The Eye is focusing it's Gaze to the Left
   actionLog: 
   actionName: Left Eye Blinking
   animationValue: attack

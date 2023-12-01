@@ -83,7 +83,8 @@ public class PlayerOption : Button
     public void OptionSelected()
     {
         Debug.Log("Selected" + option.actionName);
-        CombatManager.Instance.playerChar.GetAction(option);
+        CombatManager.Instance.playerTurn = false;
+        CombatManager.Instance.playerChar.GetAction(option, true);
     }
 
 

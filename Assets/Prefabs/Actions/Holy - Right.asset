@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecbe9198c3930e4aa4bfec32f19eae3, type: 3}
+  m_Name: Holy - Right
+  m_EditorClassIdentifier: 
+  prepLog: ...
+  mouseOverLog: Moly Holy is giggling to itself
+  actionLog: 
+  actionName: Right Slap
+  animationValue: leftattack
+  animationPrepValue: right
+  finished: 1
+  left: 1
+  defensive: 0
+  sizeCost: 0
+  speed: 0
+  target: {fileID: 0}
+  deviation: 2
+  damage: 8
+  hitLog: Holy Moly
+  parryLog: For bonus damage!
+  missLog: You narrowly avoid the attack
+  blockedLog: You stand firm
+  directionRandom: 0
+  multiAttack: 0
+  sameTarget: 0
+  hitEveryEnemyOnce: 0
+  repost: 0
+  repostBonus: 0
+  hitTotal: 1
+  hitCount: 1

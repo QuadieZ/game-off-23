@@ -6,6 +6,7 @@ public abstract class CombatAction : ScriptableObject
 {
 
     public string prepLog;
+    public string mouseOverLog;
     public string actionLog;
     public string actionName;
     public string animationValue;

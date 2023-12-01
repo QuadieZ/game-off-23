@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fecbe9198c3930e4aa4bfec32f19eae3, type: 3}
+  m_Name: Holy Spit
+  m_EditorClassIdentifier: 
+  prepLog: Moly Holy hacks up a wet glob
+  mouseOverLog: Moly Holy has a mouth full of wet glob
+  actionLog: 
+  actionName: Spittle
+  animationValue: attack
+  animationPrepValue: dodge
+  finished: 1
+  left: 0
+  defensive: 0
+  sizeCost: 0
+  speed: 0
+  target: {fileID: 0}
+  deviation: 2
+  damage: 1
+  hitLog: You are hit with a glob of molasses
+  parryLog: For bonus damage!
+  missLog: the attack misses you by a margin of error
+  blockedLog: you are moistened but unharmed
+  directionRandom: 0
+  multiAttack: 0
+  sameTarget: 0
+  hitEveryEnemyOnce: 0
+  repost: 0
+  repostBonus: 4
+  hitTotal: 1
+  hitCount: 1

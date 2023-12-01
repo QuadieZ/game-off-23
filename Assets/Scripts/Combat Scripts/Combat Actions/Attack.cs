@@ -6,16 +6,18 @@ using UnityEngine;
 public class Attack : CombatAction
 {
     public Character target;
-    public float deviation = 2;
+    public int deviation = 2;
     public int damage = 2;
-    public string hitLog = "The attack hits!";
+    public string hitLog = "The attack hits";
+    public string parryLog = "For bonus damage!";
     public string missLog = "The attack misses!";
     public string blockedLog = "The attack is blocked!";
     public bool directionRandom;
     public bool multiAttack;
     public bool sameTarget;
     public bool hitEveryEnemyOnce;
-    public bool parry;
+    public bool repost;
+    public int repostBonus;
     public int hitTotal;
     public int hitCount;
 
@@ -69,12 +71,15 @@ public class Attack : CombatAction
                 CombatManager.Instance.currentCombatLog = actionLog;
             }
 
-
+            bool reposting = false;
             int hit = Random.Range(0, actor.currentTohit + 1);
             int finalDamage = damage + actor.currentStrength - target.currentDefence;
-            if (parry && CombatManager.Instance.playerChar.attacked)
+            if (repost && target.attacked)
             {
-                finalDamage += actor.currentDefence;
+                finalDamage += actor.currentDefence + repostBonus;
+                reposting = true;
+                hit = deviation + 1;
+                target.blockNext = false;
             }
             Debug.Log("aims for " + finalDamage + " on " + target + " accuracy is " + hit + " and deviation is " + deviation);
             if (directionRandom)
@@ -99,10 +104,16 @@ public class Attack : CombatAction
             }
             else if (target.blockNext == false && finalDamage > 0)
             {
+                string newhitLog = hitLog;
+                if (reposting)
+                {
+                    newhitLog = hitLog + " " + parryLog;
+                }
 
-                CombatManager.Instance.currentCombatLog = hitLog;
+                CombatManager.Instance.currentCombatLog = newhitLog;
                 target.beforeHealth = target.currentHealth;
                 target.currentHealth -= (damage + actor.currentStrength - target.currentDefence);
+                target.attacked = true;
                 target.AnimateNow(animationValue, actor);
                 target.AnimateNow("damage", target);
                 //audio clip one is the attack sound

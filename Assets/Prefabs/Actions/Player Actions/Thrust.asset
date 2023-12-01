@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: Thrust
   m_EditorClassIdentifier: 
   prepLog: You ready your spirit and spring forward
+  mouseOverLog: 
   actionLog: 
   actionName: Forward Thust S
   animationValue: attack
   animationPrepValue: 
   finished: 1
-  left: 0
+  left: 1
   defensive: 0
   sizeCost: 1
   speed: 0
@@ -26,12 +27,14 @@ MonoBehaviour:
   deviation: 3
   damage: 2
   hitLog: You land a stinging blow
+  parryLog: For bonus damage!
   missLog: Your violence goes wide of the mark
   blockedLog: You fail to penetrate their defences
   directionRandom: 1
   multiAttack: 0
   sameTarget: 0
   hitEveryEnemyOnce: 0
-  parry: 0
+  repost: 1
+  repostBonus: 2
   hitTotal: 0
   hitCount: 0
