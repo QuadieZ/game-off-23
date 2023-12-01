@@ -32,6 +32,8 @@ public class CombatManager : MonoBehaviour
     public Encounter currentEncounter;
     public bool playerTurn;
 
+    public AudioSource musicPlayer;
+
 
     private void Awake()
     {
@@ -47,6 +49,7 @@ public class CombatManager : MonoBehaviour
         }
 
         DontDestroyOnLoad(gameObject);
+        musicPlayer = GetComponentInChildren<AudioSource>();
     }
 
     // Start is called before the first frame update
@@ -85,6 +88,7 @@ public class CombatManager : MonoBehaviour
     {
         playerChar.Refresh(true);
         currentEncounter = encounter;
+        musicPlayer.Play();
         currentCombatLog = "A Battle has Begun";
         foreach (Character chara in currentEncounter.enemiesInEncounter)
         {
@@ -250,6 +254,9 @@ public class CombatManager : MonoBehaviour
             button.interactable = false;
 
         }
+        musicPlayer.volume = 1f;
+        musicPlayer.Stop();
+        musicPlayer.volume = 1f;
         Debug.Log("Battle Ends");
         //end the combat
 

@@ -11,6 +11,7 @@ public class Character : MonoBehaviour
     public int defaultMaxHealth;
     public int defaultHealth;
     public int currentHealth;
+    public int beforeHealth;
     public string secretWeakness;
     [Header("Defence")]
     public int defaultDefence;
@@ -38,6 +39,10 @@ public class Character : MonoBehaviour
     [Header("UI")]
     public Transform healthBar;
 
+    [Header("Sound")]
+    public AudioSource audioSource;
+    public List<AudioClip> audioClips = new List<AudioClip>();
+
 
     public Animator myAnim;
 
@@ -45,6 +50,7 @@ public class Character : MonoBehaviour
     private void Start()
     {
         myAnim = GetComponentInChildren<Animator>();
+        audioSource = GetComponentInChildren<AudioSource>();
         Refresh(true);
 
     }
@@ -79,7 +85,7 @@ public class Character : MonoBehaviour
         CombatManager.Instance.currentCombatLog = action.prepLog;
         yield return new WaitForSecondsRealtime(2f);
         StartCoroutine(action.Execute(this));
-        Debug.Log(name + "finished Acting" + action.actionName);
+        //Debug.Log(name + "finished Acting" + action.actionName);
         yield return null;
 
 
@@ -110,8 +116,16 @@ public class Character : MonoBehaviour
         if (chara.myAnim != null)
         {
             chara.myAnim.SetTrigger(animTrigger);
-            Debug.Log(animTrigger + "meow meow");
+            //Debug.Log(animTrigger + "meow meow");
         }
+    }
+
+    public void PlayAudio(int indexOfClip)
+    {
+        audioSource.Stop();
+        audioSource.clip = audioClips[indexOfClip];
+        audioSource.Play();
+        Debug.Log( audioSource.clip.name +" played");
     }
 
     public void AnimateHealth()
@@ -119,6 +133,8 @@ public class Character : MonoBehaviour
         if (currentHealth <= 0)
         {
             Debug.Log(characterName + " died");
+            //the death sound should always be last in the index
+            PlayAudio(audioClips.Count - 1);
             myAnim.SetBool("death", true);
             healthBar.gameObject.SetActive(false);
             Death();
@@ -127,6 +143,16 @@ public class Character : MonoBehaviour
         {
             float _c = currentHealth;
             float _d = defaultHealth;
+            if(beforeHealth > currentHealth)
+            {
+                //damage sound effect is 2
+                PlayAudio(2);
+            }
+            else if (beforeHealth < currentHealth)
+            {
+                //heal sound effect is 3
+                PlayAudio(3);
+            }
             var scale = healthBar.localScale;
             scale.x = _c / _d;
             healthBar.localScale = scale;

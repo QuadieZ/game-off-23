@@ -130,7 +130,7 @@ AnimationClip:
     - time: 2
       value: {fileID: -78375453, guid: ad176ae930a1c5342a183b7e996cb7dd, type: 3}
     attribute: m_Sprite
-    path: Spam-Enemy-sidesprite_0
+    path: Spam-Enemy-sidesprite_left
     classID: 212
     script: {fileID: 0}
     flags: 2
@@ -171,7 +171,7 @@ AnimationClip:
     - time: 2
       value: {fileID: -78375453, guid: ad176ae930a1c5342a183b7e996cb7dd, type: 3}
     attribute: m_Sprite
-    path: Spam-Enemy-sidesprite_0 (1)
+    path: Spam-Enemy-sidesprite_right
     classID: 212
     script: {fileID: 0}
     flags: 2
@@ -201,7 +201,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 2773882690
+      path: 2698784923
       attribute: 0
       script: {fileID: 0}
       typeID: 212
@@ -210,7 +210,7 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     - serializedVersion: 2
-      path: 1374580818
+      path: 2426695013
       attribute: 0
       script: {fileID: 0}
       typeID: 212

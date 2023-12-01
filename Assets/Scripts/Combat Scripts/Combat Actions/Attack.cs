@@ -87,18 +87,26 @@ public class Attack : CombatAction
             {
                 target.AnimateNow("miss", actor);
                 target.AnimateNow("dodge", target);
+                //audio clip one is the attack sound
+                actor.audioSource.pitch = 1.2f;
+                actor.PlayAudio(0);
+                actor.audioSource.pitch = 1f;
                 Debug.Log(actor.name + " missed and left was " + left);
                 CombatManager.Instance.currentCombatLog = missLog;
                 yield return new WaitForSecondsRealtime(2);
+                
 
             }
             else if (target.blockNext == false && finalDamage > 0)
             {
 
                 CombatManager.Instance.currentCombatLog = hitLog;
+                target.beforeHealth = target.currentHealth;
                 target.currentHealth -= (damage + actor.currentStrength - target.currentDefence);
                 target.AnimateNow(animationValue, actor);
                 target.AnimateNow("damage", target);
+                //audio clip one is the attack sound
+                actor.PlayAudio(0);
                 target.AnimateHealth();
                 Debug.Log(actor.name + " hit and left was " + left);
                 yield return new WaitForSecondsRealtime(0.5f);
@@ -112,12 +120,17 @@ public class Attack : CombatAction
             }
             else
             {
+
                 target.AnimateNow("miss", actor);
                 target.AnimateNow("block", target);
+                actor.audioSource.pitch = 0.9f;
+                actor.PlayAudio(0);
+                actor.audioSource.pitch = 1f;
                 target.blockNext = false;
                 Debug.Log(actor.name + " was blocked ");
                 CombatManager.Instance.currentCombatLog = blockedLog;
                 yield return new WaitForSecondsRealtime(2);
+                
             }
             Debug.Log("executed" + actionName);
             if (multiAttack == true && hitEveryEnemyOnce == false)
